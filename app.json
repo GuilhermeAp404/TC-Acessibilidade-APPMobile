@@ -20,6 +20,15 @@
         "backgroundColor": "#ffffff"
       }
     },
+    "plugins":[
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "recordAudioAndroid": false
+        }
+      ]
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }
