@@ -1,10 +1,10 @@
-import {useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { StatusBar } from 'expo-status-bar';
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
-import {Text, View, Button, TouchableOpacity, Pressable, Image } from 'react-native';
-import {styles} from './styles'
+import { Text, View, Button, TouchableOpacity, Pressable, Image } from 'react-native';
+import { styles } from './styles'
 
 import MonkeyLogo from '../../../assets/robotic-monkey.png'
 import api from '../../service/axios';
@@ -39,7 +39,7 @@ export function Principal() {
         .then(response=> {return response})
         .catch(err=>console.log(err))
 
-        
+
         let product:String
         if(response.products[0]!=="" || response.products[0].includes('-'||'|'||":")){
             product=response.products[0]
@@ -70,22 +70,39 @@ export function Principal() {
     return (
         <View style={styles.container}>
 
-            <View style={styles.cameraContainer}>
+            <View 
+                style={styles.cameraContainer} 
+                accessible={true}
+                accessibilityLabel='Câmera'
+                accessibilityHint='Coloque o produto perto e clique na câmera para identifica-lo'
+            >
 
                 <CameraView ref={camera}style={styles.cameraContainer} facing={facing} />
-                <Pressable style={styles.cameraContainer} onPress={sendToApi} />
+                <Pressable style={styles.cameraContainer} onPress={sendToApi}/>
             </View>
             
             <View style={styles.menuButtons}>
 
-                <TouchableOpacity style={styles.touchable} onPress={()=>navigation.navigate("List")}>
+                <TouchableOpacity 
+                    style={styles.touchable} 
+                    onPress={()=>navigation.navigate("List")}
+                    accessible={true}
+                    accessibilityRole='button'
+                    accessibilityLabel='Ir para sua lista de compras'
+                    accessibilityHint='Clique para navegar até sua lista de compras'
+                >
                     <Text style={styles.touchableText}>✏️</Text>
                 </TouchableOpacity>
             </View>
 
             <View style={styles.displayView}>
 
-                <Text style={styles.productText}>{product}</Text>
+                <Text 
+                    style={styles.productText}
+                    accessibilityLiveRegion='polite'
+                >
+                    {product}
+                </Text>
                 <Image source={MonkeyLogo} style={styles.ImageLogo} />
             </View>
             <StatusBar style='light'/>
