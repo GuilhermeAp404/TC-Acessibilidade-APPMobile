@@ -67,9 +67,15 @@ export function List() {
 
                 <Text style={{fontSize:32, color:'white', fontWeight:'bold'}}>Lista</Text>
 
-                <View style={{flexDirection:'row', gap:12}}>
+                <View style={{flexDirection:'row', gap:12}}  accessible={true}>
                 
-                    <TouchableOpacity onPress={()=>navigation.navigate("Home")}>
+                    <TouchableOpacity 
+                        onPress={()=>navigation.navigate("Home")}
+                        accessibilityLabel='Voltar para tela principal'
+                        accessibilityHint='Clique para voltar para tela principal'
+                        accessibilityRole='button'
+                        
+                    >
                         <Entypo name="arrow-with-circle-left" size={42} color="white" />
                     </TouchableOpacity>
                     
@@ -77,23 +83,40 @@ export function List() {
                         placeholder='Insira o nome do produto aqui...' 
                         value={input} style={styles.textInput} 
                         onChangeText={(e)=>getTypedText(e)}
+                        accessibilityLabel='Adicionar produto'
+                        accessibilityHint='Clique para adicionar um produto'
                     />
 
-                    <TouchableOpacity onPress={sendToList}>
+                    <TouchableOpacity 
+                        onPress={sendToList}
+                        accessibilityLabel='Adicionar produto'
+                        accessibilityHint='Clique para adicionar um produto'
+                        accessibilityRole='button'
+                    >
 
                         <AntDesign name="pluscircle" size={42} color="white" />
                     </TouchableOpacity>
                 </View>
             </View>
 
-            <ScrollView style={styles.listContainer}>
+            <ScrollView 
+                style={styles.listContainer} 
+                accessible={true} 
+                accessibilityLabel='Lista de compras'
+                accessibilityLiveRegion='polite'
+            >
 
                 {productsList.map((item)=>(
-                    <View style={styles.listItem} key={item}>
+                    <View style={styles.listItem} key={item} accessible={true}>
 
-                        <Text style={styles.listItemText}>{item}</Text>
+                        <Text style={styles.listItemText} accessibilityLabel={item}>{item}</Text>
                         
-                        <TouchableOpacity onPress={()=>deleteItem(item)}>
+                        <TouchableOpacity 
+                            onPress={()=>deleteItem(item)}
+                            accessibilityLabel={`Remover ${item}`}
+                            accessibilityHint={`Clique para remover ${item}`}
+                            accessibilityRole='button'
+                        >
                             <MaterialCommunityIcons name="trash-can" size={42} color="black" />
                         </TouchableOpacity>
                     </View>
