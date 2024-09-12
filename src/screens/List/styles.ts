@@ -7,16 +7,17 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         backgroundColor:'#fff',
     },
+    
     header:{
+        display:'flex',
         backgroundColor: '#5dbbff',
         width: '100%',
         alignItems:'center',
         justifyContent:'center',
-        flexDirection:'row',
-        paddingTop: 70,
-        gap: 4,
+        paddingTop: 75,
+        gap: 12,
         paddingHorizontal:8,
-        paddingBottom: 5,
+        paddingBottom: 15,
     },
 
     button:{
@@ -34,21 +35,29 @@ export const styles = StyleSheet.create({
     },
 
     listContainer:{
-        alignItems:"stretch",
-        display:'flex',
         width:'95%',
-        paddingHorizontal: 4
+        paddingHorizontal: 4,
+        marginBottom: 12
     },
 
     listItem:{
-        backgroundColor:"#5dbbff",
+        display:'flex',
+        flexDirection: 'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        backgroundColor: '#DEF1FF',
+        borderColor:"#5dbbff",
+        borderWidth: 3,
         paddingVertical: 16,
         paddingHorizontal:8,
         marginTop: 16,
-        fontSize: 24,
+        borderRadius:4,
+    },
+
+    listItemText:{
+        fontSize: 18,
         fontWeight: 'bold',
         textAlign:'left',
-        borderRadius:4,
-    }
+    },
 
 })
