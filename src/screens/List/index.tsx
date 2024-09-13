@@ -80,6 +80,7 @@ export function List() {
                         accessibilityHint={'Clique aqui para voltar para tela principal'}
                         accessibilityRole={'button'}
                     >
+
                         <Entypo name="arrow-with-circle-left" size={42} color="white" />
                     </TouchableOpacity>
                     
@@ -106,21 +107,28 @@ export function List() {
 
             <ScrollView 
                 style={styles.listContainer}
-                accessible={true}
                 accessibilityLiveRegion='assertive' 
             >
 
                 {productsList.map((item)=>(
-                    <View style={styles.listItem} key={item} accessible={true}>
+                    <View style={styles.listItem} key={item}> 
 
-                        <Text style={styles.listItemText} accessibilityLabel={item}>{item}</Text>
+                        <Text 
+                            style={styles.listItemText}
+                            accessible={true} 
+                            accessibilityLabel={item}
+                        >
+                            {item}
+                        </Text>
                         
                         <TouchableOpacity 
                             onPress={()=>deleteItem(item)}
                             accessibilityLabel={`Remover ${item}`}
+                            accessible={true}
                             accessibilityHint={`Clique aqui para remover o produto ${item} na sua lista`}
                             accessibilityRole={'button'}
                         >
+
                             <MaterialCommunityIcons name="trash-can" size={42} color="black" />
                         </TouchableOpacity>
                     </View>
