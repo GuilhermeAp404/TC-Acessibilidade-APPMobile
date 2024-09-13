@@ -65,16 +65,20 @@ export function List() {
 
             <View style={styles.header}>
 
-                <Text style={{fontSize:32, color:'white', fontWeight:'bold'}}>Lista</Text>
+                <Text 
+                    style={{fontSize:32, color:'white', fontWeight:'bold'}}
+                    accessible={true}
+                    accessibilityLabel='Lista de compras'
+                >Lista de compras</Text>
 
-                <View style={{flexDirection:'row', gap:12}}  accessible={true}>
+                <View style={{flexDirection:'row', gap:12}}>
                 
                     <TouchableOpacity 
                         onPress={()=>navigation.navigate("Home")}
-                        accessibilityLabel='Voltar para tela principal'
-                        accessibilityHint='Clique para voltar para tela principal'
-                        accessibilityRole='button'
-                        
+                        accessible={true}
+                        accessibilityLabel={'Voltar para tela principal'}
+                        accessibilityHint={'Clique aqui para voltar para tela principal'}
+                        accessibilityRole={'button'}
                     >
                         <Entypo name="arrow-with-circle-left" size={42} color="white" />
                     </TouchableOpacity>
@@ -83,15 +87,16 @@ export function List() {
                         placeholder='Insira o nome do produto aqui...' 
                         value={input} style={styles.textInput} 
                         onChangeText={(e)=>getTypedText(e)}
-                        accessibilityLabel='Adicionar produto'
-                        accessibilityHint='Clique para adicionar um produto'
+                        accessible={true}
+                        accessibilityLabel='Insira o nome do produto aqui'
                     />
 
                     <TouchableOpacity 
                         onPress={sendToList}
-                        accessibilityLabel='Adicionar produto'
-                        accessibilityHint='Clique para adicionar um produto'
-                        accessibilityRole='button'
+                        accessible={true}
+                        accessibilityLabel={'Adicionar produto'}
+                        accessibilityHint={'Clique aqui para adicionar o produto digitado na sua lista'}
+                        accessibilityRole={'button'}
                     >
 
                         <AntDesign name="pluscircle" size={42} color="white" />
@@ -100,10 +105,9 @@ export function List() {
             </View>
 
             <ScrollView 
-                style={styles.listContainer} 
-                accessible={true} 
-                accessibilityLabel='Lista de compras'
-                accessibilityLiveRegion='polite'
+                style={styles.listContainer}
+                accessible={true}
+                accessibilityLiveRegion='assertive' 
             >
 
                 {productsList.map((item)=>(
@@ -114,8 +118,8 @@ export function List() {
                         <TouchableOpacity 
                             onPress={()=>deleteItem(item)}
                             accessibilityLabel={`Remover ${item}`}
-                            accessibilityHint={`Clique para remover ${item}`}
-                            accessibilityRole='button'
+                            accessibilityHint={`Clique aqui para remover o produto ${item} na sua lista`}
+                            accessibilityRole={'button'}
                         >
                             <MaterialCommunityIcons name="trash-can" size={42} color="black" />
                         </TouchableOpacity>

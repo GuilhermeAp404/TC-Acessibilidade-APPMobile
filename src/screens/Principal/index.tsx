@@ -70,15 +70,17 @@ export function Principal() {
     return (
         <View style={styles.container}>
 
-            <View 
-                style={styles.cameraContainer} 
-                accessible={true}
-                accessibilityLabel='Câmera'
-                accessibilityHint='Coloque o produto perto e clique na câmera para identifica-lo'
-            >
+            <View style={styles.cameraContainer}>
 
-                <CameraView ref={camera}style={styles.cameraContainer} facing={facing} />
-                <Pressable style={styles.cameraContainer} onPress={sendToApi}/>
+                <CameraView accessibilityLabel={'Câmera'} ref={camera}style={styles.cameraContainer} facing={facing} />
+                <Pressable 
+                    style={styles.cameraContainer} 
+                    onPress={sendToApi}
+                    accessible={true}
+                    accessibilityLabel={'Identificar o produto'}
+                    accessibilityHint={'Aponte para o produto e clique aqui para identificar'}
+                    accessibilityRole={'button'}
+                />
             </View>
             
             <View style={styles.menuButtons}>
@@ -87,9 +89,9 @@ export function Principal() {
                     style={styles.touchable} 
                     onPress={()=>navigation.navigate("List")}
                     accessible={true}
-                    accessibilityRole='button'
-                    accessibilityLabel='Ir para sua lista de compras'
-                    accessibilityHint='Clique para navegar até sua lista de compras'
+                    accessibilityLabel={'Ir para lista de compras'}
+                    accessibilityHint={'Clique para ir para lista de compras'}
+                    accessibilityRole={'button'}
                 >
                     <Text style={styles.touchableText}>✏️</Text>
                 </TouchableOpacity>
@@ -99,7 +101,9 @@ export function Principal() {
 
                 <Text 
                     style={styles.productText}
-                    accessibilityLiveRegion='polite'
+                    accessibilityLiveRegion={'assertive'}
+                    accessibilityLabel= {'Nome do produto'}
+                    accessibilityHint={'É nessa região que fica o nome do produto identificado'}
                 >
                     {product}
                 </Text>
