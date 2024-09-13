@@ -101,9 +101,8 @@ export function Principal() {
 
                 <Text 
                     style={styles.productText}
-                    accessibilityLiveRegion={'assertive'}
-                    accessibilityLabel= {'Nome do produto'}
-                    accessibilityHint={'É nessa região que fica o nome do produto identificado'}
+                    accessible={true}
+                    accessibilityLiveRegion="assertive"
                 >
                     {product}
                 </Text>

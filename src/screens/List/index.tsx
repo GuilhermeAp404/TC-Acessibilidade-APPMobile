@@ -107,17 +107,14 @@ export function List() {
 
             <ScrollView 
                 style={styles.listContainer}
+                accessible={true} 
                 accessibilityLiveRegion='assertive' 
             >
 
                 {productsList.map((item)=>(
-                    <View style={styles.listItem} key={item}> 
+                    <View style={styles.listItem} key={item} accessible={true} > 
 
-                        <Text 
-                            style={styles.listItemText}
-                            accessible={true} 
-                            accessibilityLabel={item}
-                        >
+                        <Text style={styles.listItemText}>
                             {item}
                         </Text>
                         
