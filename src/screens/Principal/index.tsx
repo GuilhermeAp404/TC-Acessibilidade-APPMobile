@@ -30,7 +30,7 @@ export function Principal() {
             name:'image.jpg',
             type:'image/jpg'
         })))
-        const response = await api.post('/api/vision', formData, {
+        const identified:string[] = await api.post('/api/vision', formData, {
             headers:{
             'Content-Type':'multipart/form-data'
             }
@@ -41,11 +41,7 @@ export function Principal() {
 
 
         let product:String
-        if(response.products[0]!=="" || response.products[0].includes('-'||'|'||":")){
-            product=response.products[0]
-        }else{
-            product=response.products[1]
-        }
+        product = (identified.length!=0)?(identified[0]):("Nada foi identificado")
 
         setProduct(product)
         setTimeout(()=>{
